@@ -1,5 +1,7 @@
 package com.threeandoiddev.mynotemvvm;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,10 @@ import com.threeandoiddev.mynotemvvm.databinding.EachRvBinding;
 
 public class RVAdapter extends ListAdapter<Note,RVAdapter.ViewHolder> {
 
-
-  public RVAdapter(){
+Context context;
+  public RVAdapter(Context context){
 super(CALLBACK);
+this.context=context;
   }
 private static final DiffUtil.ItemCallback<Note> CALLBACK=new DiffUtil.ItemCallback<Note>() {
     @Override
@@ -33,7 +36,7 @@ private static final DiffUtil.ItemCallback<Note> CALLBACK=new DiffUtil.ItemCallb
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.each_rv,parent,false);
+      View view= LayoutInflater.from(context).inflate(R.layout.each_rv,parent,false);
         return new ViewHolder(view);
     }
 
